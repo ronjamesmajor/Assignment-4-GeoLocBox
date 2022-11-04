@@ -5,6 +5,8 @@ namespace _270_GeoLocBox
 {
     public partial class Form1 : Form
     {
+        //DigitalInput button1 = null;
+
         public Form1()
         {
             InitializeComponent();
