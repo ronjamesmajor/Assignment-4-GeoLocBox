@@ -44,6 +44,12 @@
       "frameworks": {
         "net6.0-windows7.0": {
           "targetAlias": "net6.0-windows",
+          "dependencies": {
+            "Phidget22.NET": {
+              "target": "Package",
+              "version": "[1.12.20220912, )"
+            }
+          },
           "imports": [
             "net461",
             "net462",

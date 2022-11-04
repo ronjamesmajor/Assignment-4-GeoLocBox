@@ -1,0 +1,17 @@
+C:\Users\kayla.purcha\source\repos\Assignment-4-GeoLocBox\270_GeoLocBox\270_GeoLocBox\bin\Debug\net6.0-windows\270_GeoLocBox.exe
+C:\Users\kayla.purcha\source\repos\Assignment-4-GeoLocBox\270_GeoLocBox\270_GeoLocBox\bin\Debug\net6.0-windows\270_GeoLocBox.deps.json
+C:\Users\kayla.purcha\source\repos\Assignment-4-GeoLocBox\270_GeoLocBox\270_GeoLocBox\bin\Debug\net6.0-windows\270_GeoLocBox.runtimeconfig.json
+C:\Users\kayla.purcha\source\repos\Assignment-4-GeoLocBox\270_GeoLocBox\270_GeoLocBox\bin\Debug\net6.0-windows\270_GeoLocBox.dll
+C:\Users\kayla.purcha\source\repos\Assignment-4-GeoLocBox\270_GeoLocBox\270_GeoLocBox\bin\Debug\net6.0-windows\270_GeoLocBox.pdb
+C:\Users\kayla.purcha\source\repos\Assignment-4-GeoLocBox\270_GeoLocBox\270_GeoLocBox\obj\Debug\net6.0-windows\270_GeoLocBox.csproj.AssemblyReference.cache
+C:\Users\kayla.purcha\source\repos\Assignment-4-GeoLocBox\270_GeoLocBox\270_GeoLocBox\obj\Debug\net6.0-windows\_270_GeoLocBox.Form1.resources
+C:\Users\kayla.purcha\source\repos\Assignment-4-GeoLocBox\270_GeoLocBox\270_GeoLocBox\obj\Debug\net6.0-windows\270_GeoLocBox.csproj.GenerateResource.cache
+C:\Users\kayla.purcha\source\repos\Assignment-4-GeoLocBox\270_GeoLocBox\270_GeoLocBox\obj\Debug\net6.0-windows\270_GeoLocBox.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\kayla.purcha\source\repos\Assignment-4-GeoLocBox\270_GeoLocBox\270_GeoLocBox\obj\Debug\net6.0-windows\270_GeoLocBox.AssemblyInfoInputs.cache
+C:\Users\kayla.purcha\source\repos\Assignment-4-GeoLocBox\270_GeoLocBox\270_GeoLocBox\obj\Debug\net6.0-windows\270_GeoLocBox.AssemblyInfo.cs
+C:\Users\kayla.purcha\source\repos\Assignment-4-GeoLocBox\270_GeoLocBox\270_GeoLocBox\obj\Debug\net6.0-windows\270_GeoLocBox.csproj.CoreCompileInputs.cache
+C:\Users\kayla.purcha\source\repos\Assignment-4-GeoLocBox\270_GeoLocBox\270_GeoLocBox\obj\Debug\net6.0-windows\270_GeoLocBox.dll
+C:\Users\kayla.purcha\source\repos\Assignment-4-GeoLocBox\270_GeoLocBox\270_GeoLocBox\obj\Debug\net6.0-windows\refint\270_GeoLocBox.dll
+C:\Users\kayla.purcha\source\repos\Assignment-4-GeoLocBox\270_GeoLocBox\270_GeoLocBox\obj\Debug\net6.0-windows\270_GeoLocBox.pdb
+C:\Users\kayla.purcha\source\repos\Assignment-4-GeoLocBox\270_GeoLocBox\270_GeoLocBox\obj\Debug\net6.0-windows\270_GeoLocBox.genruntimeconfig.cache
+C:\Users\kayla.purcha\source\repos\Assignment-4-GeoLocBox\270_GeoLocBox\270_GeoLocBox\obj\Debug\net6.0-windows\ref\270_GeoLocBox.dll

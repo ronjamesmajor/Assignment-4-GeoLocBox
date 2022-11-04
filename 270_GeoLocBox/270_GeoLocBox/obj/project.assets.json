@@ -1,11 +1,73 @@
 {
   "version": 3,
   "targets": {
-    "net6.0-windows7.0": {}
+    "net6.0-windows7.0": {
+      "Phidget22.NET/1.12.20220912": {
+        "type": "package",
+        "compile": {
+          "lib/netcoreapp2.0/Phidget22.NET.dll": {
+            "related": ".deps.json;.pdb;.xml"
+          }
+        },
+        "runtime": {
+          "lib/netcoreapp2.0/Phidget22.NET.dll": {
+            "related": ".deps.json;.pdb;.xml"
+          }
+        },
+        "build": {
+          "build/Phidget22.NET.props": {}
+        }
+      }
+    }
   },
-  "libraries": {},
+  "libraries": {
+    "Phidget22.NET/1.12.20220912": {
+      "sha512": "ZQoAXvwDd3KqRprVrWpdTY1SQ0ECEjk1CBrbWhTEQhi0xi8Xdj4QKcoYKk3xSyduxebdbJHLhPUov9SE5YgokQ==",
+      "type": "package",
+      "path": "phidget22.net/1.12.20220912",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "NativeDlls/x64/phidget22.dll",
+        "NativeDlls/x86/phidget22.dll",
+        "build/Phidget22.NET.props",
+        "lib/net20/Phidget22.NET.dll",
+        "lib/net20/Phidget22.NET.pdb",
+        "lib/net20/Phidget22.NET.xml",
+        "lib/net40/Phidget22.NET.dll",
+        "lib/net40/Phidget22.NET.pdb",
+        "lib/net40/Phidget22.NET.xml",
+        "lib/net45/Phidget22.NET.dll",
+        "lib/net45/Phidget22.NET.pdb",
+        "lib/net45/Phidget22.NET.xml",
+        "lib/net46/Phidget22.NET.dll",
+        "lib/net46/Phidget22.NET.pdb",
+        "lib/net46/Phidget22.NET.xml",
+        "lib/netcoreapp1.0/Phidget22.NET.deps.json",
+        "lib/netcoreapp1.0/Phidget22.NET.dll",
+        "lib/netcoreapp1.0/Phidget22.NET.pdb",
+        "lib/netcoreapp1.0/Phidget22.NET.xml",
+        "lib/netcoreapp2.0/Phidget22.NET.deps.json",
+        "lib/netcoreapp2.0/Phidget22.NET.dll",
+        "lib/netcoreapp2.0/Phidget22.NET.pdb",
+        "lib/netcoreapp2.0/Phidget22.NET.xml",
+        "lib/netstandard1.3/Phidget22.NET.deps.json",
+        "lib/netstandard1.3/Phidget22.NET.dll",
+        "lib/netstandard1.3/Phidget22.NET.pdb",
+        "lib/netstandard1.3/Phidget22.NET.xml",
+        "lib/netstandard2.0/Phidget22.NET.deps.json",
+        "lib/netstandard2.0/Phidget22.NET.dll",
+        "lib/netstandard2.0/Phidget22.NET.pdb",
+        "lib/netstandard2.0/Phidget22.NET.xml",
+        "phidget22.net.1.12.20220912.nupkg.sha512",
+        "phidget22.net.nuspec"
+      ]
+    }
+  },
   "projectFileDependencyGroups": {
-    "net6.0-windows7.0": []
+    "net6.0-windows7.0": [
+      "Phidget22.NET >= 1.12.20220912"
+    ]
   },
   "packageFolders": {
     "C:\\Users\\kayla.purcha\\.nuget\\packages\\": {},
@@ -51,6 +113,12 @@
     "frameworks": {
       "net6.0-windows7.0": {
         "targetAlias": "net6.0-windows",
+        "dependencies": {
+          "Phidget22.NET": {
+            "target": "Package",
+            "version": "[1.12.20220912, )"
+          }
+        },
         "imports": [
           "net461",
           "net462",
