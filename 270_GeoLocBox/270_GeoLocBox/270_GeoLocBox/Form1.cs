@@ -7,9 +7,9 @@ namespace _270_GeoLocBox
     public partial class Form1 : Form
     {
         public static List<string> Location = new();
-        public static string Illuminance;
-        public static string Humidty;
-        public static string Temperature;
+        public  string Illuminance;
+        public  string Humidty;
+        public  string Temperature;
         public DigitalInput btnGreen = null;
         public DigitalInput btnRed = null;
         public GPS gps0 = new GPS();
@@ -96,8 +96,7 @@ namespace _270_GeoLocBox
         {
             if (btnGreen.State)
             {
-            dl.InsertSensorData(gps0.DateAndTime.Date.ToLocalTime(), Temperature, Humidty, Illuminance);
-            
+                dl.InsertSensorData(gps0.DateAndTime.Date.ToLocalTime(), Temperature, Humidty, Illuminance);
             }
             
             //dl.InsertGeoData(DateTime.Now, "latitude","longitude","altitude"); FOR RED!!!!
