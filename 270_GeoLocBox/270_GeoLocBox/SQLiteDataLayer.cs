@@ -92,7 +92,7 @@ namespace _270_GeoLocBox
             using (SqliteConnection conn = new(connectionString))
             {
                 conn.Open();
-                cmd = new($"UPDATE Table1 SET test_data = '{test_data}', record_date = '{record_date}' WHERE id = '{id}'", conn);
+                cmd = new($"UPDATE SensorDetails SET test_data = '{test_data}', record_date = '{record_date}' WHERE id = '{id}'", conn);
                 cmd.ExecuteNonQuery();
             }
         }
@@ -102,7 +102,7 @@ namespace _270_GeoLocBox
             using (SqliteConnection conn = new(connectionString))
             {
                 conn.Open();
-                cmd = new($"DELETE FROM Table1 WHERE id = '{id}'", conn);
+                cmd = new($"DELETE FROM SensorDetails WHERE id = '{id}'", conn);
                 cmd.ExecuteNonQuery();
             }
         }
@@ -117,7 +117,7 @@ namespace _270_GeoLocBox
             using (SqliteConnection conn = new(connectionString))
             {
                 conn.Open();
-                cmd = new("SELECT * FROM Table1", conn);
+                cmd = new("SELECT * FROM SensorDetails", conn);
                 SqliteDataReader dr = cmd.ExecuteReader();
                 while (dr.Read())
                 {
@@ -132,7 +132,7 @@ namespace _270_GeoLocBox
         {
             using (SqliteConnection conn = new(connectionString))
             {
-                cmd = new($"INSERT INTO Table1 (test_data, record_date) VALUES ('{test_data}', '{record_date.ToString("yyyy-MM-dd")}')", conn);
+                cmd = new($"INSERT INTO SensorDetails (test_data, record_date) VALUES ('{test_data}', '{record_date.ToString("yyyy-MM-dd")}')", conn);
                 conn.Open();
                 cmd.ExecuteNonQuery();
             }
