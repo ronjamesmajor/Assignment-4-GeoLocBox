@@ -44,7 +44,7 @@ namespace _270_GeoLocBox
                                                     )", Conn));
         }
 
-        public void InsertRecord(SqliteCommand cmd, DateTime record_date, string latitude,string longitude, string altitude, string temp, string humidity, string light)
+        public void InsertSensorData(DateTime record_date, string temp, string humidity, string light)
         {
             using (SqliteConnection conn = new(connectionString))
             {
@@ -53,7 +53,9 @@ namespace _270_GeoLocBox
                 conn.Open();
                 cmd.ExecuteNonQuery();
             }
-
+        }
+        public void InsertGeoData(DateTime record_date, string latitude, string longitude, string altitude)
+        {
             using (SqliteConnection conn = new(connectionString))
             {
                 cmd = new(@$"INSERT INTO GeoLocation 
