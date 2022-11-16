@@ -20,7 +20,8 @@ namespace _270_GeoLocBox
         //Port 0 == green
         //Port 1 == red
 
-        private SqlLiteDataLayer dl = new("Data source=C:/GeoBox/GeoBox.db");
+        //private SqlLiteDataLayer dl = new("Data source=C:/GeoBox/GeoBox.db");
+        private static SqlLiteDataLayer dl = new("C:/Users/kayla.purcha/Documents/GeoBox.db");
 
         public Form1()
         {
@@ -52,28 +53,28 @@ namespace _270_GeoLocBox
             //Light Sensor
             ls0.Channel = 0;
             ls0.HubPort = 3;
-            ls0.IsHubPortDevice = true;
+            //ls0.IsHubPortDevice = true;
             ls0.IlluminanceChange += Ls0_IlluminanceChange;
             ls0.Open();
 
             //Humidity Sensor
             hs0.Channel = 0;
             hs0.HubPort = 4;
-            hs0.IsHubPortDevice = true;
+            //hs0.IsHubPortDevice = true;
             hs0.HumidityChange += Hs0_HumidityChange;
             hs0.Open();
 
             //TemperatureSensor
             ts0.Channel = 0;
             ts0.HubPort = 4;
-            ts0.IsHubPortDevice = true;
+            //ts0.IsHubPortDevice = true;
             ts0.TemperatureChange += Ts0_TemperatureChange;
             ts0.Open();
         }
 
         private void BtnRed_StateChange(object sender, Phidget22.Events.DigitalInputStateChangeEventArgs e)
         {
-            throw new NotImplementedException();
+            //throw new NotImplementedException();
         }
 
         private void Ts0_TemperatureChange(object sender, Phidget22.Events.TemperatureSensorTemperatureChangeEventArgs e)
@@ -89,11 +90,6 @@ namespace _270_GeoLocBox
         private void Ls0_IlluminanceChange(object sender, Phidget22.Events.LightSensorIlluminanceChangeEventArgs e)
         {
             Illuminance = e.Illuminance.ToString(); //PERFECT!
-        }
-
-        private void Gps0_PositionFixStateChange(object sender, Phidget22.Events.GPSPositionFixStateChangeEventArgs e)
-        {
-            throw new NotImplementedException();
         }
 
         private void btnGreen_StateChange(object sender, Phidget22.Events.DigitalInputStateChangeEventArgs e)

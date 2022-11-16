@@ -13,19 +13,20 @@ namespace _270_GeoLocBox
 {
     public class SqlLiteDataLayer
     {
-        private string connectionString = "";
-        public static SqliteConnection Conn;       
+        private static string ConnectionString = "";
+        public static SqliteConnection Conn;
 
         public SqlLiteDataLayer(string connectionString)
         {
-            this.connectionString = connectionString;
-                SetUpDB();
+            ConnectionString = connectionString;
+            SetUpDB();
         }
 
         private static void SetUpDB()
         {
-            //These need to be altered to match the geolocDB
-            ExecuteNonQuery(new SqliteCommand(@"USING GeoBox
+            using (SqliteConnection conn = new(ConnectionString))
+            {
+                ExecuteNonQuery(new SqliteCommand(@"USING GeoBox
                                                 CREATE TABLE 'GeoLocation' (
                                                     'Time' TEXT NOT NULL,
                                                     'Latitude' TEXT NOT NULL,
@@ -34,7 +35,7 @@ namespace _270_GeoLocBox
                                                     PRIMARY KEY('Time')
                                                     )", Conn));
 
-            ExecuteNonQuery(new SqliteCommand(@"USING GeoBox
+                ExecuteNonQuery(new SqliteCommand(@"USING GeoBox
                                                 CREATE TABLE 'SensorData' (
                                                     'Time' TEXT NOT NULL,
                                                     'Temp' TEXT,
@@ -42,11 +43,12 @@ namespace _270_GeoLocBox
                                                     'Light' TEXT,
                                                     PRIMARY KEY('Time')
                                                     )", Conn));
+            }
         }
 
         public void InsertSensorData(DateTime record_date, string temp, string humidity, string light)
         {
-            using (SqliteConnection conn = new(connectionString))
+            using (SqliteConnection conn = new(ConnectionString))
             {
                 SqliteCommand cmd = new();
 
@@ -58,7 +60,7 @@ namespace _270_GeoLocBox
         }
         public void InsertGeoData(DateTime record_date, string latitude, string longitude, string altitude)
         {
-            using (SqliteConnection conn = new(connectionString))
+            using (SqliteConnection conn = new(ConnectionString))
             {
                 SqliteCommand cmd = new();
 
