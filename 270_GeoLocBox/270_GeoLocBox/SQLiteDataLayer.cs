@@ -36,35 +36,15 @@ namespace _270_GeoLocBox
         private static void SetUpDB()
         {
             //These need to be altered to match the geolocDB
-            ExecuteNonQuery(new SqliteCommand("create table Users(Username varchar(30) primary key, [Password] nvarchar(50) not null, Register_Date datetime not null, Profile_Picture varbinary(MAX) null, Online bit null, Status nvarchar(30) null, Biography nvarchar(MAX) null)", Conn));
-            ExecuteNonQuery(new SqliteCommand("create table Chat(username varchar(30), message_date datetime primary key(username,message_date), [message] varchar(150), foreign key (username) references users(username))", Conn));
-            ExecuteNonQuery(new SqliteCommand(@"create table DirectMessages (
-	                        Sender varchar(30) foreign key references Users(Username),
-	                        Receiver varchar(30) foreign key references Users(Username),
-	                        [TimeStamp] datetime,
-	                        Body varchar(255),
-                            [Read] bit,
-	                        primary key (Sender, Receiver, [TimeStamp])
-                            );", Conn));
-            ExecuteNonQuery(new SqliteCommand(@"create table Groups
-                            (
-	                            GroupId int identity(1,1) primary key not null,
-	                            GroupName varchar(25) not null,
-	                            GroupCreator varchar(25) not null
-                            );", Conn));
-            ExecuteNonQuery(new SqliteCommand(@"create table GroupUsers
-                            (
-                                GroupID int foreign key references Groups(GroupID) not null,
-	                            GroupUser varchar(30) foreign key references Users(username) not null,
-	                            primary key (GroupID, GroupUser)
-                            );", Conn));
-            ExecuteNonQuery(new SqliteCommand(@"create table GroupChat(
-	                            GroupID int foreign key references Groups(GroupID) not null,
-	                            Sender varchar(30) foreign key references Users(username) not null,
-	                            [TimeStamp] datetime not null,
-	                            Body varchar(255),
-	                            primary key (GroupId, [TimeStamp])
-                            );", Conn));
+            ExecuteNonQuery(new SqliteCommand(@"USING GeoBox
+                                                CREATE TABLE 'SensorDetails' (
+                                                    'Time' TEXT NOT NULL,
+                                                    'Location' TEXT NOT NULL,
+                                                    'Temp' TEXT,
+                                                    'Humidity' TEXT,
+                                                    'Light' TEXT,
+                                                    PRIMARY KEY('Time')
+                                                    )", Conn));
         }
 
         private static void ResetConnection()
