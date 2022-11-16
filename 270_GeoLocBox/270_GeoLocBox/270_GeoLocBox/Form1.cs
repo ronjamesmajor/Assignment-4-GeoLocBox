@@ -28,7 +28,7 @@ namespace _270_GeoLocBox
 
         private void btnGreen_StateChange(object sender, Phidget22.Events.DigitalInputStateChangeEventArgs e)
         {
-            dl.InsertRecord();
+            //dl.InsertRecord();
         }
 
         private static void Gps0_PositionChange(object sender, Phidget22.Events.GPSPositionChangeEventArgs e)
