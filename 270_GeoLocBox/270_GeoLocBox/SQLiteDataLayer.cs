@@ -33,6 +33,11 @@ namespace _270_GeoLocBox
             SetUpDB();
         }
 
+        private static void ResetConnection()
+        {
+            Conn = new SqliteConnection(ConnectionString);
+        }
+
         private static void SetUpDB()
         {
             //These need to be altered to match the geolocDB
@@ -45,11 +50,6 @@ namespace _270_GeoLocBox
                                                     'Light' TEXT,
                                                     PRIMARY KEY('Time')
                                                     )", Conn));
-        }
-
-        private static void ResetConnection()
-        {
-            Conn = new SqliteConnection(ConnectionString);
         }
 
         public static bool ExecuteNonQuery(SqliteCommand cmd)
@@ -84,6 +84,16 @@ namespace _270_GeoLocBox
             finally
             {
                 Conn.Close();
+            }
+        }
+
+        public void InsertRecord(SqliteCommand cmd, DateTime record_date, string location, string temp, string humidity, string light)
+        {
+            using (SqliteConnection conn = new(connectionString))
+            {
+                cmd = new($"INSERT INTO SensorDetails VALUES ('{record_date.ToString("yyyy-MM-dd")}', '{location}', '{temp}', '{humidity}', '{light}')", conn);
+                conn.Open();
+                cmd.ExecuteNonQuery();
             }
         }
 
@@ -128,14 +138,5 @@ namespace _270_GeoLocBox
             return table;
         }
 
-        public void InsertRecord(SqliteCommand cmd, string test_data, DateTime record_date)
-        {
-            using (SqliteConnection conn = new(connectionString))
-            {
-                cmd = new($"INSERT INTO SensorDetails (test_data, record_date) VALUES ('{test_data}', '{record_date.ToString("yyyy-MM-dd")}')", conn);
-                conn.Open();
-                cmd.ExecuteNonQuery();
-            }
-        }
     }
 }

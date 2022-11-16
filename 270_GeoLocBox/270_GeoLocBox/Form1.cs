@@ -9,7 +9,7 @@ namespace _270_GeoLocBox
         //DigitalInput button1 = null;
 
         //Allows pathing to database file
-        SqlLiteDataLayer dl = new("Data source=D:/testDB.db");
+        private SqlLiteDataLayer dl = new("Data source=C:/GeoBox/GeoBox.db");
 
         public Form1()
         {
