@@ -13,10 +13,11 @@ namespace _270_GeoLocBox
 {
     public class SqlLiteDataLayer
     {
-        private static string connectionString;
+        private string connectionString = "";
         public static SqliteConnection Conn;
+       
 
-        static public string ConnectionString
+        public string ConnectionString
         {
             get { return connectionString; }
             set
@@ -26,16 +27,17 @@ namespace _270_GeoLocBox
             }
         }
 
-        static SqlLiteDataLayer()
+        public SqlLiteDataLayer(string connectionString)
         {
-            connectionString = ConfigurationManager.ConnectionStrings["LocalConnection"].ConnectionString;
-            Conn = new SqliteConnection(ConnectionString);
-            SetUpDB();
+            //connectionString = ConfigurationManager.ConnectionStrings["LocalConnection"].ConnectionString;
+            //Conn = new SqliteConnection(ConnectionString);
+            this.ConnectionString = connectionString;
+                SetUpDB();
         }
 
         private static void ResetConnection()
         {
-            Conn = new SqliteConnection(ConnectionString);
+            //Conn = new SqliteConnection(ConnectionString);
         }
 
         private static void SetUpDB()
