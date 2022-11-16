@@ -1,17 +1,17 @@
 {
   "version": 2,
-  "dgSpecHash": "sYtMKl8aQHB1PMZfTAjVifM8MVX6pXvJqhcssHms94P17wXcbQmJvBk7lu6FiuXCUdVNIbx+5aVLSV8sO70U9Q==",
+  "dgSpecHash": "55io8sghKhKP+VxDOJuA0aXbUDCCAtjJCxD+7YwgO76NBtPerYVRObwsnRYr3E/ZxfBw6kHFKVu2C/uz9CNf1Q==",
   "success": true,
-  "projectFilePath": "C:\\Users\\ronald.major\\Source\\Repos\\Assignment-4-GeoLocBox\\270_GeoLocBox\\270_GeoLocBox\\270_GeoLocBox.csproj",
+  "projectFilePath": "C:\\Users\\kayla.purcha\\source\\repos\\Assignment-4-GeoLocBox\\270_GeoLocBox\\270_GeoLocBox\\270_GeoLocBox.csproj",
   "expectedPackageFiles": [
-    "C:\\Users\\ronald.major\\.nuget\\packages\\microsoft.data.sqlite\\6.0.10\\microsoft.data.sqlite.6.0.10.nupkg.sha512",
-    "C:\\Users\\ronald.major\\.nuget\\packages\\microsoft.data.sqlite.core\\6.0.10\\microsoft.data.sqlite.core.6.0.10.nupkg.sha512",
-    "C:\\Users\\ronald.major\\.nuget\\packages\\phidget22.net\\1.12.20220912\\phidget22.net.1.12.20220912.nupkg.sha512",
-    "C:\\Users\\ronald.major\\.nuget\\packages\\sqlitepclraw.bundle_e_sqlite3\\2.0.6\\sqlitepclraw.bundle_e_sqlite3.2.0.6.nupkg.sha512",
-    "C:\\Users\\ronald.major\\.nuget\\packages\\sqlitepclraw.core\\2.0.6\\sqlitepclraw.core.2.0.6.nupkg.sha512",
-    "C:\\Users\\ronald.major\\.nuget\\packages\\sqlitepclraw.lib.e_sqlite3\\2.0.6\\sqlitepclraw.lib.e_sqlite3.2.0.6.nupkg.sha512",
-    "C:\\Users\\ronald.major\\.nuget\\packages\\sqlitepclraw.provider.e_sqlite3\\2.0.6\\sqlitepclraw.provider.e_sqlite3.2.0.6.nupkg.sha512",
-    "C:\\Users\\ronald.major\\.nuget\\packages\\system.memory\\4.5.3\\system.memory.4.5.3.nupkg.sha512"
+    "C:\\Users\\kayla.purcha\\.nuget\\packages\\microsoft.data.sqlite\\6.0.10\\microsoft.data.sqlite.6.0.10.nupkg.sha512",
+    "C:\\Users\\kayla.purcha\\.nuget\\packages\\microsoft.data.sqlite.core\\6.0.10\\microsoft.data.sqlite.core.6.0.10.nupkg.sha512",
+    "C:\\Users\\kayla.purcha\\.nuget\\packages\\phidget22.net\\1.12.20220912\\phidget22.net.1.12.20220912.nupkg.sha512",
+    "C:\\Users\\kayla.purcha\\.nuget\\packages\\sqlitepclraw.bundle_e_sqlite3\\2.0.6\\sqlitepclraw.bundle_e_sqlite3.2.0.6.nupkg.sha512",
+    "C:\\Users\\kayla.purcha\\.nuget\\packages\\sqlitepclraw.core\\2.0.6\\sqlitepclraw.core.2.0.6.nupkg.sha512",
+    "C:\\Users\\kayla.purcha\\.nuget\\packages\\sqlitepclraw.lib.e_sqlite3\\2.0.6\\sqlitepclraw.lib.e_sqlite3.2.0.6.nupkg.sha512",
+    "C:\\Users\\kayla.purcha\\.nuget\\packages\\sqlitepclraw.provider.e_sqlite3\\2.0.6\\sqlitepclraw.provider.e_sqlite3.2.0.6.nupkg.sha512",
+    "C:\\Users\\kayla.purcha\\.nuget\\packages\\system.memory\\4.5.3\\system.memory.4.5.3.nupkg.sha512"
   ],
   "logs": []
 }

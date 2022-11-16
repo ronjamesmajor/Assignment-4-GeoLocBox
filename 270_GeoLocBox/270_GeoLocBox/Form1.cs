@@ -6,9 +6,11 @@ namespace _270_GeoLocBox
 {
     public partial class Form1 : Form
     {
-        //DigitalInput button1 = null;
+        DigitalInput btnGreen = null;
 
-        //Allows pathing to database file
+        //Port 0 == green
+        //Port 1 == red
+
         private SqlLiteDataLayer dl = new("Data source=C:/GeoBox/GeoBox.db");
 
         public Form1()
@@ -16,41 +18,40 @@ namespace _270_GeoLocBox
             InitializeComponent();
 
             //Demo code from button quiz thing
-            //button1 = new DigitalInput();
-            //button1.Channel = 0;
-            //button1.HubPort = 0;
-            //button1.IsHubPortDevice = true;
-            //button1.StateChange += Button1_StateChange;
-            //button1.StateChange += Button1_StateChange1;
-            //button1.Open(1000);
+            btnGreen = new DigitalInput();
+            btnGreen.Channel = 0;
+            btnGreen.HubPort = 0;
+            btnGreen.IsHubPortDevice = true;
+            btnGreen.StateChange += btnGreen_StateChange;
+            btnGreen.Open(1000);
         }
 
-        //private void button1_Click(object sender, EventArgs e)
-        //{
-        //    dl.InsertRecord("Test", DateTime.Now);
-        //}
+        private void btnGreen_StateChange(object sender, Phidget22.Events.DigitalInputStateChangeEventArgs e)
+        {
+            dl.InsertRecord();
+        }
 
-        //private void btnLoad_Click(object sender, EventArgs e)
-        //{
-        //    dataGridView1.DataSource = dl.GetRecords();
-        //}
+        private static void Gps0_PositionChange(object sender, Phidget22.Events.GPSPositionChangeEventArgs e)
+        {
+            List<string> Location = new();
+            Location.Add("Latitude: " + e.Latitude);
+            Location.Add("Longitude: " + e.Longitude);
+            Location.Add("Altitude: " + e.Altitude);
+            //return Location;
+        }
 
-        //private void btnDelete_Click(object sender, EventArgs e)
-        //{
-        //    var x = dataGridView1.SelectedRows[0];
-        //    var z = x.Cells[0].Value;
-        //    dl.DeleteRecord(int.Parse((string)z));
+        static void Main(string[] args)
+        {
+            GPS gps0 = new GPS();
+            gps0.DateAndTime.Date.ToLocalTime();
+            gps0.PositionChange += Gps0_PositionChange;
 
-        //    dataGridView1.DataSource = dl.GetRecords();
-        //}
+            gps0.Open(5000);
 
-        //private void btnUpdate_Click(object sender, EventArgs e)
-        //{
-        //    var x = dataGridView1.SelectedRows[0];
-        //    var z = x.Cells[0].Value;
-        //    dl.UpdateRecord(int.Parse((string)z), txtTestData.Text, DateTime.Now);
+            //Wait until Enter has been pressed before exiting
+            Console.ReadLine();
 
-        //    dataGridView1.DataSource = dl.GetRecords();
-        //}
+            gps0.Close();
+        }
     }
 }

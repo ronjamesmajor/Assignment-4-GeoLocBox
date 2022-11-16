@@ -14,30 +14,12 @@ namespace _270_GeoLocBox
     public class SqlLiteDataLayer
     {
         private string connectionString = "";
-        public static SqliteConnection Conn;
-       
-
-        public string ConnectionString
-        {
-            get { return connectionString; }
-            set
-            {
-                connectionString = value;
-                ResetConnection();
-            }
-        }
+        public static SqliteConnection Conn;       
 
         public SqlLiteDataLayer(string connectionString)
         {
-            //connectionString = ConfigurationManager.ConnectionStrings["LocalConnection"].ConnectionString;
-            //Conn = new SqliteConnection(ConnectionString);
-            this.ConnectionString = connectionString;
+            this.connectionString = connectionString;
                 SetUpDB();
-        }
-
-        private static void ResetConnection()
-        {
-            //Conn = new SqliteConnection(ConnectionString);
         }
 
         private static void SetUpDB()
@@ -52,6 +34,16 @@ namespace _270_GeoLocBox
                                                     'Light' TEXT,
                                                     PRIMARY KEY('Time')
                                                     )", Conn));
+        }
+
+        public void InsertRecord(SqliteCommand cmd, DateTime record_date, string location, string temp, string humidity, string light)
+        {
+            using (SqliteConnection conn = new(connectionString))
+            {
+                cmd = new($"INSERT INTO SensorDetails VALUES ('{record_date.ToString("yyyy-MM-dd")}', '{location}', '{temp}', '{humidity}', '{light}')", conn);
+                conn.Open();
+                cmd.ExecuteNonQuery();
+            }
         }
 
         public static bool ExecuteNonQuery(SqliteCommand cmd)
@@ -88,57 +80,5 @@ namespace _270_GeoLocBox
                 Conn.Close();
             }
         }
-
-        public void InsertRecord(SqliteCommand cmd, DateTime record_date, string location, string temp, string humidity, string light)
-        {
-            using (SqliteConnection conn = new(connectionString))
-            {
-                cmd = new($"INSERT INTO SensorDetails VALUES ('{record_date.ToString("yyyy-MM-dd")}', '{location}', '{temp}', '{humidity}', '{light}')", conn);
-                conn.Open();
-                cmd.ExecuteNonQuery();
-            }
-        }
-
-        public void UpdateRecord(SqliteCommand cmd, int id, string test_data, DateTime record_date)
-        {
-            using (SqliteConnection conn = new(connectionString))
-            {
-                conn.Open();
-                cmd = new($"UPDATE SensorDetails SET test_data = '{test_data}', record_date = '{record_date}' WHERE id = '{id}'", conn);
-                cmd.ExecuteNonQuery();
-            }
-        }
-
-        public void DeleteRecord(SqliteCommand cmd, int id)
-        {
-            using (SqliteConnection conn = new(connectionString))
-            {
-                conn.Open();
-                cmd = new($"DELETE FROM SensorDetails WHERE id = '{id}'", conn);
-                cmd.ExecuteNonQuery();
-            }
-        }
-
-        public DataTable GetRecords(SqliteCommand cmd)
-        {
-            DataTable table = new();
-            table.Columns.Add("id");
-            table.Columns.Add("test_data"); ;
-            table.Columns.Add("record_date");
-
-            using (SqliteConnection conn = new(connectionString))
-            {
-                conn.Open();
-                cmd = new("SELECT * FROM SensorDetails", conn);
-                SqliteDataReader dr = cmd.ExecuteReader();
-                while (dr.Read())
-                {
-                    table.Rows.Add(dr[0], dr[1], dr[2]);
-                }
-            }
-
-            return table;
-        }
-
     }
 }
