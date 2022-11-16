@@ -1,0 +1,11 @@
+﻿################################################################################
+# This .gitignore file was automatically created by Microsoft(R) Visual Studio.
+################################################################################
+
+/270_GeoLocBox/.vs/270_GeoLocBox/v17/.suo
+/.vs/Assignment-4-GeoLocBox/v17/.suo
+/270_GeoLocBox/.vs/270_GeoLocBox/FileContentIndex/503e36c7-bbb3-41e7-9f2b-dfc377b6dbf7.vsidx
+/270_GeoLocBox/.vs/270_GeoLocBox/FileContentIndex/61978351-e68a-44ce-ab1d-be86d552250c.vsidx
+/270_GeoLocBox/.vs/270_GeoLocBox/FileContentIndex/d4a5fff7-a9a6-4b06-b686-73a854261091.vsidx
+/270_GeoLocBox/.vs/270_GeoLocBox/FileContentIndex/df51eaae-e548-430f-9bdd-cac384d09c9c.vsidx
+*.lock
