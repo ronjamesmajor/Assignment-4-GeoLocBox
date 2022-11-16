@@ -21,7 +21,7 @@ namespace _270_GeoLocBox
         //Port 1 == red
 
         //private SqlLiteDataLayer dl = new("Data source=C:/GeoBox/GeoBox.db");
-        private static SqlLiteDataLayer dl = new("C:/Users/kayla.purcha/Documents/GeoBox.db");
+        private SqlLiteDataLayer dl = new("data source=C:/Users/kayla.purcha/Documents/GeoBox.db");
 
         public Form1()
         {

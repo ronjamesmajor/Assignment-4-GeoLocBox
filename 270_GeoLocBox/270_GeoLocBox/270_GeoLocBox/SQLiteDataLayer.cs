@@ -50,14 +50,17 @@ namespace _270_GeoLocBox
         {
             using (SqliteConnection conn = new(ConnectionString))
             {
-                SqliteCommand cmd = new();
-
-                cmd = new(@$"INSERT INTO SensorData 
-                            VALUES ('{record_date.ToString("yyyy-MM-dd")}','{temp}', '{humidity}', '{light}')", conn);
+                SqliteCommand cmd = new(@$"INSERT INTO SensorData 
+                            VALUES (@Date,@Temp,@Hum,@Light)", conn);
+                cmd.Parameters.AddWithValue("@Date", record_date.ToString("yyyy-MM-dd HH:mm:ss"));
+                cmd.Parameters.AddWithValue("@Temp", temp);
+                cmd.Parameters.AddWithValue("@Hum", humidity);
+                cmd.Parameters.AddWithValue("@Light", light);
                 conn.Open();
                 cmd.ExecuteNonQuery();
             }
         }
+
         public void InsertGeoData(DateTime record_date, string latitude, string longitude, string altitude)
         {
             using (SqliteConnection conn = new(ConnectionString))
@@ -75,9 +78,12 @@ namespace _270_GeoLocBox
         {
             try
             {
-                Conn.Open();
-                cmd.ExecuteNonQuery();
-                return true;
+                using (SqliteConnection conn = new(ConnectionString))
+                {
+                    conn.Open();
+                    cmd.ExecuteNonQuery();
+                    return true;
+                }
             }
             catch
             {
@@ -85,7 +91,7 @@ namespace _270_GeoLocBox
             }
             finally
             {
-                Conn.Close();
+                //conn.Close();
             }
         }
 
