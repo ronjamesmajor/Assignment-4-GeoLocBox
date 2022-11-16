@@ -48,6 +48,8 @@ namespace _270_GeoLocBox
         {
             using (SqliteConnection conn = new(connectionString))
             {
+                SqliteCommand cmd = new();
+
                 cmd = new(@$"INSERT INTO SensorData 
                             VALUES ('{record_date.ToString("yyyy-MM-dd")}','{temp}', '{humidity}', '{light}')", conn);
                 conn.Open();
@@ -58,6 +60,8 @@ namespace _270_GeoLocBox
         {
             using (SqliteConnection conn = new(connectionString))
             {
+                SqliteCommand cmd = new();
+
                 cmd = new(@$"INSERT INTO GeoLocation 
                             VALUES ('{record_date.ToString("yyyy-MM-dd")}','{latitude}', '{longitude}', '{altitude}')", conn);
                 conn.Open();
