@@ -28,7 +28,9 @@ namespace _270_GeoLocBox
             ExecuteNonQuery(new SqliteCommand(@"USING GeoBox
                                                 CREATE TABLE 'GeoLocation' (
                                                     'Time' TEXT NOT NULL,
-                                                    'Location' TEXT NOT NULL,
+                                                    'Latitude' TEXT NOT NULL,
+                                                    'Longitude' TEXT NOT NULL,
+                                                    'Altitude' TEXT NOT NULL,
                                                     PRIMARY KEY('Time')
                                                     )", Conn));
 
