@@ -44,9 +44,15 @@ namespace _270_GeoLocBox
         {
             //These need to be altered to match the geolocDB
             ExecuteNonQuery(new SqliteCommand(@"USING GeoBox
-                                                CREATE TABLE 'SensorDetails' (
+                                                CREATE TABLE 'GeoLocation' (
                                                     'Time' TEXT NOT NULL,
                                                     'Location' TEXT NOT NULL,
+                                                    PRIMARY KEY('Time')
+                                                    )", Conn));
+
+            ExecuteNonQuery(new SqliteCommand(@"USING GeoBox
+                                                CREATE TABLE 'SensorData' (
+                                                    'Time' TEXT NOT NULL,
                                                     'Temp' TEXT,
                                                     'Humidity' TEXT,
                                                     'Light' TEXT,
