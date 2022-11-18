@@ -14,7 +14,6 @@ namespace _270_GeoLocBox
     public class SqlLiteDataLayer
     {
         private static string ConnectionString = "";
-        public static SqliteConnection Conn;
 
         public SqlLiteDataLayer(string connectionString)
         {
@@ -33,7 +32,7 @@ namespace _270_GeoLocBox
                                                     'Longitude' TEXT NOT NULL,
                                                     'Altitude' TEXT NOT NULL,
                                                     PRIMARY KEY('Time')
-                                                    )", Conn));
+                                                    )", conn));
 
                 ExecuteNonQuery(new SqliteCommand(@"USING GeoBox
                                                 CREATE TABLE 'SensorData' (
@@ -42,7 +41,7 @@ namespace _270_GeoLocBox
                                                     'Humidity' TEXT,
                                                     'Light' TEXT,
                                                     PRIMARY KEY('Time')
-                                                    )", Conn));
+                                                    )", conn));
             }
         }
 
@@ -50,8 +49,7 @@ namespace _270_GeoLocBox
         {
             using (SqliteConnection conn = new(ConnectionString))
             {
-                SqliteCommand cmd = new(@$"INSERT INTO SensorData 
-                            VALUES (@Date,@Temp,@Hum,@Light)", conn);
+                SqliteCommand cmd = new(@$"INSERT INTO SensorData VALUES (@Date,@Temp,@Hum,@Light)", conn);
                 cmd.Parameters.AddWithValue("@Date", record_date.ToString("yyyy-MM-dd HH:mm:ss"));
                 cmd.Parameters.AddWithValue("@Temp", temp);
                 cmd.Parameters.AddWithValue("@Hum", humidity);
@@ -66,9 +64,11 @@ namespace _270_GeoLocBox
             using (SqliteConnection conn = new(ConnectionString))
             {
                 SqliteCommand cmd = new();
-
-                cmd = new(@$"INSERT INTO GeoLocation 
-                            VALUES ('{record_date.ToString("yyyy-MM-dd")}','{latitude}', '{longitude}', '{altitude}')", conn);
+                cmd = new(@$"INSERT INTO GeoLocation VALUES (@Date,@Lat, @Long, @Alt)", conn);
+                cmd.Parameters.AddWithValue("@Date", record_date.ToString("yyyy-MM-dd HH:mm:ss"));
+                cmd.Parameters.AddWithValue("@Lat", latitude);
+                cmd.Parameters.AddWithValue("@Long", longitude);
+                cmd.Parameters.AddWithValue("@Alt", altitude);
                 conn.Open();
                 cmd.ExecuteNonQuery();
             }
@@ -88,27 +88,6 @@ namespace _270_GeoLocBox
             catch
             {
                 return false;
-            }
-            finally
-            {
-                //conn.Close();
-            }
-        }
-
-        public static object? ExecuteScaler(SqliteCommand cmd)
-        {
-            try
-            {
-                Conn.Open();
-                return cmd.ExecuteScalar();
-            }
-            catch
-            {
-                return null;
-            }
-            finally
-            {
-                Conn.Close();
             }
         }
     }
