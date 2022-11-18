@@ -25,23 +25,21 @@ namespace _270_GeoLocBox
         {
             using (SqliteConnection conn = new(ConnectionString))
             {
-                ExecuteNonQuery(new SqliteCommand(@"USING GeoBox
-                                                CREATE TABLE 'GeoLocation' (
+                ExecuteNonQuery(@"CREATE TABLE 'GeoLocation' (
                                                     'Time' TEXT NOT NULL,
                                                     'Latitude' TEXT NOT NULL,
                                                     'Longitude' TEXT NOT NULL,
                                                     'Altitude' TEXT NOT NULL,
                                                     PRIMARY KEY('Time')
-                                                    )", conn));
+                                                    )");
 
-                ExecuteNonQuery(new SqliteCommand(@"USING GeoBox
-                                                CREATE TABLE 'SensorData' (
+                ExecuteNonQuery(@"CREATE TABLE 'SensorData' (
                                                     'Time' TEXT NOT NULL,
                                                     'Temp' TEXT,
                                                     'Humidity' TEXT,
                                                     'Light' TEXT,
                                                     PRIMARY KEY('Time')
-                                                    )", conn));
+                                                    )");
             }
         }
 
@@ -74,13 +72,14 @@ namespace _270_GeoLocBox
             }
         }
 
-        public static bool ExecuteNonQuery(SqliteCommand cmd)
+        public static bool ExecuteNonQuery(string query)
         {
             try
             {
                 using (SqliteConnection conn = new(ConnectionString))
                 {
                     conn.Open();
+                    SqliteCommand cmd = new(query, conn);
                     cmd.ExecuteNonQuery();
                     return true;
                 }

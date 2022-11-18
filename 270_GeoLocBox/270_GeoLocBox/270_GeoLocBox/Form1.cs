@@ -7,7 +7,7 @@ namespace _270_GeoLocBox
     public partial class Form1 : Form
     {
         private static List<string> Location = new();
-        private  string Illuminance;
+        private string Illuminance;
         private string Humidty;
         private string Temperature;
         private DigitalInput btnGreen = null;
@@ -17,8 +17,8 @@ namespace _270_GeoLocBox
         private HumiditySensor hs0 = new HumiditySensor();
         private TemperatureSensor ts0 = new TemperatureSensor();
 
-        //private SqlLiteDataLayer dl = new("Data source=C:/GeoBox/GeoBox.db");
-        private SqlLiteDataLayer dl = new("data source=C:/Users/kayla.purcha/Documents/GeoBox.db");
+        private SqlLiteDataLayer dl = new("data source=C:/DataBaseThings/GeoLocation.db");
+        //private SqlLiteDataLayer dl = new("data source=C:/Users/kayla.purcha/Documents/GeoBox.db");
 
         public Form1()
         {
@@ -90,11 +90,13 @@ namespace _270_GeoLocBox
             if (btnGreen.State)
                 try
                 {
-                    dl.InsertSensorData(gps0.DateAndTime.Date.ToLocalTime(), Temperature, Humidty, Illuminance);
+                    dl.InsertSensorData(DateTime.Now, Temperature, Humidty, Illuminance);
+                    DisplayLabels();
                 }
                 catch
                 {
                     dl.InsertSensorData(DateTime.Now, Temperature, Humidty, Illuminance);
+                    DisplayLabels();
                 }
         }
 
@@ -103,12 +105,26 @@ namespace _270_GeoLocBox
             if(btnRed.State)
                 try
                 {
-                    dl.InsertGeoData(gps0.DateAndTime.Date.ToLocalTime(), Location[0], Location[1], Location[2]);
+                    dl.InsertGeoData(DateTime.Now, Location[0], Location[1], Location[2]);
+                    DisplayLabels();
                 }
                 catch
                 {
-                    dl.InsertGeoData(DateTime.Now, "50.0392800", "-110.6766100", "691m/2261ft");
+                    if (Location.Count > 0)
+                        DisplayLabels();
+                    else
+                        dl.InsertGeoData(DateTime.Now, "No location", "No location", "No location");
                 }
+        }
+
+        private void DisplayLabels()
+        {
+            lblTemp.Text = $"Tempurature: {Temperature}";
+            lblHumidity.Text = $"Humidity: {Humidty}";
+            lblLight.Text = $"Illuminance: {Illuminance}";
+            lblLat.Text = $"Latitiude: {Location[0]}";
+            lblLong.Text = $"Longitude: {Location[1]}";
+            lblAlt.Text = $"Altitude: {Location[2]}";
         }
 
         private static void Gps0_PositionChange(object sender, Phidget22.Events.GPSPositionChangeEventArgs e)
