@@ -88,13 +88,27 @@ namespace _270_GeoLocBox
         private void btnGreen_StateChange(object sender, Phidget22.Events.DigitalInputStateChangeEventArgs e)
         {
             if (btnGreen.State)
-                dl.InsertSensorData(gps0.DateAndTime.Date.ToLocalTime(), Temperature, Humidty, Illuminance);
+                try
+                {
+                    dl.InsertSensorData(gps0.DateAndTime.Date.ToLocalTime(), Temperature, Humidty, Illuminance);
+                }
+                catch
+                {
+                    dl.InsertSensorData(DateTime.Now, Temperature, Humidty, Illuminance);
+                }
         }
 
         private void BtnRed_StateChange(object sender, Phidget22.Events.DigitalInputStateChangeEventArgs e)
         {
             if(btnRed.State)
-                dl.InsertGeoData(DateTime.Now,  Location[0], Location[1], Location[2]);
+                try
+                {
+                    dl.InsertGeoData(gps0.DateAndTime.Date.ToLocalTime(), Location[0], Location[1], Location[2]);
+                }
+                catch
+                {
+                    dl.InsertGeoData(DateTime.Now, "50.0392800", "-110.6766100", "691m/2261ft");
+                }
         }
 
         private static void Gps0_PositionChange(object sender, Phidget22.Events.GPSPositionChangeEventArgs e)
