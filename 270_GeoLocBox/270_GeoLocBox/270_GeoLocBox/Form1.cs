@@ -90,14 +90,8 @@ namespace _270_GeoLocBox
         {
             if (btnGreen.State)
             {
-                try
-                {
-                    dl.InsertSensorData(DateTime.Now, Temperature, Humidty, Illuminance);
-                }
-                catch
-                {
-                    dl.InsertSensorData(DateTime.Now, Temperature, Humidty, Illuminance);
-                }
+                try { dl.InsertSensorData(DateTime.Now, Temperature, Humidty, Illuminance); }
+                catch { dl.InsertSensorData(DateTime.Now, Temperature, Humidty, Illuminance); }
                 DisplayLabels();
             }
         }
@@ -106,14 +100,8 @@ namespace _270_GeoLocBox
         {
             if (btnRed.State)
             {
-                try
-                {
-                    dl.InsertGeoData(DateTime.Now, _Location[0], _Location[1], _Location[2]);
-                }
-                catch
-                {
-
-                }
+                try { dl.InsertGeoData(DateTime.Now, _Location[0], _Location[1], _Location[2]); }
+                catch { dl.InsertGeoData(DateTime.Now, "No data", "No data", "No data"); }
                 DisplayLabels();
             }
         }
